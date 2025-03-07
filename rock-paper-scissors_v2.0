@@ -1,0 +1,29 @@
+import random
+
+#DEFINE POSSIBLE CHOICES
+choices = ["rock", "paper", "scissors"]
+
+#DEFINE FUNCTIONS
+def get_computer_choice():
+    return random.choice(choices)
+
+def get_user_choice():
+    play = input("Make your play (rock, paper, or scissors): ")
+    while play.lower() not in choices:
+        print("Invalid choice! Please choose rock, paper, or scissors.")
+        play = input("Make your play (rock, paper, or scissors): ")
+    return play.lower()
+
+def find_winner(user, computer):
+    outcomes = {("rock", "paper"): "You Lose!", ("rock", "scissors"): "You Win!", ("paper", "scissors"): "You Lose!", ("paper", "rock"): "You Win!", ("scissors", "rock"): "You Lose!", ("scissors", "paper"): "You Win!"}
+
+    if user == computer:
+        return "It's a Draw!"
+    else:
+        return outcomes.get((user, computer))
+
+#MAIN
+user = get_user_choice()
+computer = get_computer_choice()
+print("The computer chose " + computer + ".")
+print(find_winner(user, computer))
