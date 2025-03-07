@@ -1,0 +1,39 @@
+import random
+
+#DEFINE POSSIBLE CHOICES
+choices = ["rock", "paper", "scissors"]
+
+#DEFINE FUNCTIONS
+def computer_play():
+    global choices
+    return random.choice(choices)
+
+def user_play():
+    global choices
+    play = input("Make your play: ")
+    while play.lower() not in choices:
+        print("Invalid choice!")
+        play = input("Make your play: ")
+    return play.lower()
+
+def find_winner(user_play, computer_play):
+    if computer_play == "rock" and user_play == "paper":
+        return "You Win!"
+    elif computer_play == "rock" and user_play == "scissors":
+        return "You Lose!"
+    elif computer_play == "paper" and user_play == "scissors":
+        return "You Win!"
+    elif computer_play == "paper" and user_play == "rock":
+        return "You Lose!"
+    elif computer_play == "scissors" and user_play == "rock":
+        return "You Win!"
+    elif computer_play == "scissors" and user_play == "paper":
+        return "You Lose!"
+    else:
+        return "It's a draw!"
+
+#MAIN
+user = user_play()
+computer = computer_play()
+print("Computer chose " + computer + "!")
+print(find_winner(user, computer))
